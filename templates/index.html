@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block html %}
+<head>
+{% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Kaazing Portal">
+    <meta name="author" content="Vikas Bhandare">
+    <meta name="theme-color" content="#317EFB">
+    <title>{% block title %}Kaazing{% endblock title %}</title>
+
+    <!-- Stylesheets -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        .boxed-pane {
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 25px;
+        }
+
+        .page-header {
+            padding: 10px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function pulse() {
+            $('#heart').animate({ fontSize: "12px" }, 300, function () {
+                $('#heart').animate({ fontSize: "16px" }, 300, function () {
+                    pulse();
+                });
+            });
+        }
+
+        $(document).ready(function () {
+            pulse();
+        });
+    </script>
+</head>
+{% endblock head %}
+<body>
+<div class="container-fluid" style="height: 100%; color: white;">
+    <div class="container page-header" style="background: #563d7c">
+        <h1>Kaazing <small></small></h1>
+    </div>
+
+    <br>
+
+    <div class="container" style="color: #563d7c; padding: 30px; min-height: calc(100% - 196px);">
+        <div id="accordion">
+            <!-- LDAP Test -->
+            {% include 'partials/ldap_test.html' %}
+
+            <!-- DB Test -->
+            {% include 'partials/db_test.html' %}
+
+            <!-- ARSystem Test -->
+            {% include 'partials/arsystem_test.html' %}
+
+            <!-- Web Services Test -->
+            {% include 'partials/webservices_test.html' %}
+        </div>
+    </div>
+
+    <!-- Dialog Box -->
+    <div id="dialog" title="Success">
+        <p></p>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe id="modalframe" class="embed-responsive-item" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <br>
+    <footer class="container page-header footer" style="background: #d7d3de; color: #563d7c; border-radius: 10px;">
+        <div class="container">
+            <p class="text-center">
+                Copyright @2020 |
+                Designed With <i class="fa fa-heart heart" id="heart" style="font-size: 15.75px; color: red"></i>
+                by Cloud - Platform Team
+            </p>
+        </div>
+    </footer>
+</div>
+</body>
+{% endblock html %}
+</html>
